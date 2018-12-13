@@ -1,0 +1,12 @@
+.header-panel{
+    font-size: 1.0rem;
+}
+
+.collection-header h4{
+    margin-left: 0.5em!important;
+}
+
+.collection-item{
+    display: flex;
+    justify-content: space-between;
+}

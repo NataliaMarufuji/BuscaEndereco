@@ -1,0 +1,21 @@
+{  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/compiler": "^4.0.2",
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "jquery": "^3.3.1",
+    "nedb": "^1.1.2",
+    "tslib": "^1.6.1"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.5.3",
+    "@types/jquery": "^3.3.2",
+    "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}

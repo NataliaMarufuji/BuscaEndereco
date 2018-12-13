@@ -1,0 +1,39 @@
+ <div class="row">
+	<div class="col s12">
+		<div class="card">
+		<div class="card-content">
+			<div class="row">
+				<form class="col s12">
+					<label class="col s12 header-panel">Cidade: {{cidade}}</label>
+					<div class="input-field col s12">
+						<input id="last_name" type="text" class="validate" ng-model="endereco.logradouro" required>
+						<label for="last_name">Logradouro</label>
+						<span ng-show="error" class="form-control alert-danger">
+							No mínimo 3 caracteres.
+						</span>
+					</div>
+					<div class="input-field col s12">
+						<input id="first_name" type="text" class="validate" ng-model="endereco.rua" required>
+						<label for="first_name">Rua</label>
+					</div>
+					<a class="waves-effect waves-light btn right" ng-click="buscaEndereco()">Buscar CEP</a>
+				</form>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-show="enderecos.length > 0">
+	<div class="card">
+		<ul class="collection" >
+			<li class="collection-header"><h4>Endereços encontrados</h4></li>
+			<li class="collection-item" ng-repeat="endereco in enderecos | orderBy:'bairro'" ng-show="endereco.localidade == cidade">
+				<span>{{endereco.logradouro}} {{endereco.complemento}}</span>
+				<span>{{endereco.bairro}}</span>
+				<span>{{endereco.cep}}</span>
+			</li>
+		</ul>
+	</div>
+</div>
+	
