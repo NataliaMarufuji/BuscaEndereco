@@ -2,6 +2,14 @@
     font-size: 1.0rem;
 }
 
+.forms-pesquisa{
+    margin-top: 2em;
+}
+
+.resultado-vazio{
+    margin-left: 1em;
+}
+
 .collection-header h4{
     margin-left: 0.5em!important;
 }

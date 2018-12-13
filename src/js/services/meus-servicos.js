@@ -1,5 +1,5 @@
-angular.module('meusServicos', ['ngResource'])
-	.factory('enderecoService', function($resource, $http) {
+angular.module('meusServicos', [])
+	.factory('enderecoService', function($http) {
 		return {
 			getCEPs: function(cidade,logradouro, rua) {
 				return $http.get('https://viacep.com.br/ws/GO/' + cidade + '/' + logradouro + '%20' + rua + '/json/')

@@ -2,6 +2,7 @@ angular.module('app').controller('MainController', ['$scope', 'enderecoService',
 
     $scope.enderecos = [];
     $scope.dadosBusca = {cidade: 'Goiânia', rua: '', logradouro: ''};
+    $scope.nenhumResultado = false;
     $scope.error = false;
 
 	$scope.buscaEndereco = function(){
@@ -13,11 +14,26 @@ angular.module('app').controller('MainController', ['$scope', 'enderecoService',
                     $scope.enderecos = response.data;
                     $scope.dadosBusca.rua = '';
                     $scope.dadosBusca.logradouro = '';
-                    console.log($scope.enderecos);
-                    enderecoService.salvarBusca($scope.dadosBusca);
+                    $scope.validarResultado($scope.enderecos);
+
+                   enderecoService.salvarBusca($scope.dadosBusca)
+                                    .then(function successCallback(response) {
+                                        console.log("Dados salvos com sucesso");
+                                    }, function errorCallback(response) {
+                                        alert("Erro ao salvar no Banco de dados");
+                                    });
+
                 }, function errorCallback(response) {
-                    alert(response.status);
+                    alert("Erro ao buscar endereços");
             });
+        }
+    }
+
+    $scope.validarResultado = function(resultado){
+        if(resultado.length == 0){
+            $scope.nenhumResultado = true;
+        }else{
+            $scope.nenhumResultado = false;
         }
     }
 
