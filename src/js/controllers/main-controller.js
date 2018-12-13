@@ -1,37 +1,28 @@
 angular.module('app').controller('MainController', ['$scope', 'enderecoService', function($scope, enderecoService) {
 
-    function Endereco() {
-        this.rua = '';
-        this.logradouro = '';
-        this.cidade = 'Goiânia';
-    }
-
     $scope.enderecos = [];
-    $scope.endereco = new Endereco();
+    $scope.dadosBusca = {cidade: 'Goiânia', rua: '', logradouro: ''};
     $scope.error = false;
 
 	$scope.buscaEndereco = function(){
         if($scope.validarLogradouro()){
             $scope.error = false;
 
-            $scope.adicionaBusca = function() {
-                $http.post('/dadosBusca', $scope.endereco);
-              }
-
-            enderecoService.getCEPs($scope.endereco.cidade, $scope.endereco.logradouro, $scope.endereco.rua)
+            enderecoService.getCEPs($scope.dadosBusca.cidade, $scope.dadosBusca.logradouro, $scope.dadosBusca.rua)
                 .then(function successCallback(response) {
                     $scope.enderecos = response.data;
-                    $scope.endereco.rua = '';
-                    $scope.endereco.logradouro = '';
+                    $scope.dadosBusca.rua = '';
+                    $scope.dadosBusca.logradouro = '';
                     console.log($scope.enderecos);
+                    enderecoService.salvarBusca($scope.dadosBusca);
                 }, function errorCallback(response) {
                     alert(response.status);
-                });;
+            });
         }
     }
 
     $scope.validarLogradouro = function(){
-        if($scope.endereco.logradouro.length < 3){
+        if($scope.dadosBusca.logradouro.length < 3){
             $scope.error = true;
             return false;
         }
